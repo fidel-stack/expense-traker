@@ -1,0 +1,43 @@
+# Local machine configuration
+local.properties
+*.local
+.env
+.env.*
+!.env.example
+.freebuff/
+
+# Gradle and Kotlin build output
+.gradle/
+.kotlin/
+build/
+**/build/
+
+# Android build output and native intermediates
+captures/
+.externalNativeBuild/
+.cxx/
+output-metadata.json
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs and crash dumps
+*.log
+*.hprof
+
+# Signing material and generated key stores
+*.jks
+*.keystore
+keystore.properties
+*.p12
+*.pfx
