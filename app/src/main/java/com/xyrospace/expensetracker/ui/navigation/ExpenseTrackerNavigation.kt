@@ -15,6 +15,9 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.xyrospace.expensetracker.ui.home.HomeScreen
+import com.xyrospace.expensetracker.ui.home.HomeViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -46,6 +49,7 @@ fun ExpenseTrackerApp() {
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
+    val homeViewModel: HomeViewModel = hiltViewModel()
 
     Scaffold(
         bottomBar = {
@@ -80,7 +84,14 @@ fun ExpenseTrackerApp() {
         ) {
             destinations.forEach { destination ->
                 composable(destination.route) {
-                    PlaceholderScreen(title = destination.label)
+                    if (destination.route == "home") {
+                        HomeScreen(
+                            onViewAll = { navController.navigate("history") { launchSingleTop = true } },
+                            viewModel = homeViewModel,
+                        )
+                    } else {
+                        PlaceholderScreen(title = destination.label)
+                    }
                 }
             }
         }

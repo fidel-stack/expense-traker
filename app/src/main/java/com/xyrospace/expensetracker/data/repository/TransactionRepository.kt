@@ -1,5 +1,7 @@
 package com.xyrospace.expensetracker.data.repository
 
+import com.xyrospace.expensetracker.data.local.CategoryExpenseRow
+import com.xyrospace.expensetracker.data.local.MonthlyAmountRow
 import com.xyrospace.expensetracker.data.local.TransactionDao
 import com.xyrospace.expensetracker.data.model.TransactionEntity
 import kotlinx.coroutines.flow.Flow
@@ -23,4 +25,16 @@ class TransactionRepository @Inject constructor(
     suspend fun update(transaction: TransactionEntity): Int = transactionDao.update(transaction)
 
     suspend fun delete(id: Long): Int = transactionDao.deleteById(id)
+
+    fun observeMonthlyAmountsByTypeAndCategory(
+        startInclusive: Long,
+        endExclusive: Long,
+    ): Flow<List<MonthlyAmountRow>> =
+        transactionDao.observeMonthlyAmountsByTypeAndCategory(startInclusive, endExclusive)
+
+    fun observeRecentTransactions(startInclusive: Long, endExclusive: Long): Flow<List<TransactionEntity>> =
+        transactionDao.observeRecentTransactions(startInclusive, endExclusive)
+
+    fun observeMonthlyUncategorizedReviewCount(startInclusive: Long, endExclusive: Long): Flow<Int> =
+        transactionDao.observeMonthlyUncategorizedReviewCount(startInclusive, endExclusive)
 }
