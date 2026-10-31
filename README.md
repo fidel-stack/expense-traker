@@ -6,13 +6,17 @@ A privacy-focused, offline-first Android expense tracker for Kenyan users. Finan
 
 The current foundation includes:
 
-- Kotlin, Jetpack Compose, Material 3, and five bottom-navigation destinations (Home, History, Add, Reports, Settings). Screens are placeholders.
+- Kotlin, Jetpack Compose, Material 3, and five bottom-navigation destinations (Home, History, Add, Reports, Settings). Reports and Settings remain placeholders.
+- Home dashboard with monthly income/expense summaries, category spending, recent transactions, and Uncategorized review indicators.
+- Transaction history grouped by local calendar date, with debounced search (recipient, note, category, reference code) and combined date/category/type filters.
+- Transaction details, editing (including source/reference preservation for imported records), and single-record deletion with confirmation.
+- Manual expense and income entry in KES, including bank income recorded with source `manual` and no external reference. Amounts are entered with at most two decimals and stored as integer cents.
 - Room persistence for transactions, categories, and recipient categorization rules.
 - Integer KES minor-unit transaction amounts (`Long`), explicit expense/income/transfer types, and explicit M-Pesa/bank/manual sources.
 - Thirteen seeded default categories and a normalized, unique recipient-rule key.
 - Room schema export and an explicit version 1 → version 2 migration.
 
-Transaction entry, category-management UI, reports, SMS access/parsing, and automatic categorization are not implemented. No SMS permissions or receivers are registered.
+Category-management UI, reports, SMS access/parsing, and automatic categorization are not implemented. No SMS permissions or receivers are registered. The Room schema is unchanged from Stage 2 and remains at version 2.
 
 ## Requirements
 
