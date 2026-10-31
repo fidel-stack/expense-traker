@@ -18,6 +18,22 @@ class TransactionRepository @Inject constructor(
 
     suspend fun getById(id: Long): TransactionEntity? = transactionDao.getById(id)
 
+    fun observeById(id: Long): Flow<TransactionEntity?> = transactionDao.observeById(id)
+
+    fun observeFiltered(
+        startInclusive: Long?,
+        endExclusive: Long?,
+        category: String?,
+        type: String?,
+        search: String?,
+    ): Flow<List<TransactionEntity>> = transactionDao.observeFiltered(
+        startInclusive = startInclusive,
+        endExclusive = endExclusive,
+        category = category,
+        type = type,
+        search = search,
+    )
+
     suspend fun getByCode(code: String): TransactionEntity? = transactionDao.getByCode(code)
 
     suspend fun insert(transaction: TransactionEntity): Long = transactionDao.insert(transaction)
