@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.xyrospace.expensetracker.ui.home.HomeScreen
 import com.xyrospace.expensetracker.ui.home.HomeViewModel
+import com.xyrospace.expensetracker.ui.settings.SettingsScreen
 import com.xyrospace.expensetracker.ui.transactions.TransactionDetailScreen
 import com.xyrospace.expensetracker.ui.transactions.TransactionFormScreen
 import com.xyrospace.expensetracker.ui.transactions.TransactionHistoryScreen
@@ -170,7 +171,7 @@ fun ExpenseTrackerApp() {
                 PlaceholderScreen(title = "Reports", testTag = "screen_reports")
             }
             composable(Routes.SETTINGS) {
-                PlaceholderScreen(title = "Settings", testTag = "screen_settings")
+                SettingsScreen()
             }
         }
     }
